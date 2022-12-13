@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-3">
+    <h1>フォロー一覧</h1>
+   {% for item in object_list %}
+   <div class="alert alert-success" role="alert">
+       <p>{{item.user.username}}</p>  
+       
+       {% if request.user in item.like.all %}
+       <a href="{% url 'follow-home' item.pk %}" class="like-btn add-color" tabindex="-1" role="button" aria-disabled="true"><i class="fas fa-heart"></i></a>{{item.like.count}}
+       {% else %}
+       <a href="{% url 'follow-home' item.pk %}" class="like-btn" tabindex="-1" role="button" aria-disabled="true"><i class="far fa-heart"></i></a>{{item.like.count}}
+       {% endif %}
+   </div>
+   {% endfor %}
+</div>
+{% endblock content %}

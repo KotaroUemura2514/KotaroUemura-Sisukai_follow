@@ -1,0 +1,23 @@
+{% extends 'navbar.html' %}
+{% block title %}ユーザー画面{% endblock title %}
+{%block content %}
+
+ <section>
+   <p>{{ account.id}}</p>
+   <p>{{ account.user}}</p>
+   <p>{{ account.last_name}}</p>
+   <p>{{ account.first_name}}</p>
+   <p>{{ account.age}}</p>
+   <p>{{ account.hobby}}</p>
+   <p>{{ account.area}}</p>
+  <div>
+    {% if account.user in connection.0.following.all %}
+    <a href="{% url 'follow-detail' account.pk %}" class="btn btn-danger ms-3" tabindex="-1" role="button" aria-disabled="true">フォロー解除</a>
+    {% else %}
+    <a href="{% url 'follow-detail' account.pk %}" class="btn btn-primary ms-3" tabindex="-1" role="button" aria-disabled="true">フォロー</a>
+    {% endif %}
+  </div>
+
+ </section>
+
+{% endblock content %}
