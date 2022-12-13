@@ -11,4 +11,17 @@
     {% endfor %}
  </section>
 
+ {#　以下、フォロー一覧機能を作成します　#}
+
+ {% comment "" %}
+<section>
+{% for item in object_list %}
+<a href="{% url 'detail' item.pk %}">
+<p>{{}}</p>
+<p></p>
+</a>
+{% endfor %}
+</section>
+{% endcomment %}
+
 {% endblock content %}
